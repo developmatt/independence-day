@@ -32,6 +32,8 @@
   left: 0;
   color: efeeed;
   transition: .3s;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   z-index: -1;
 }
 
@@ -132,4 +134,29 @@
   -ms-animation: rotating 2s linear infinite;
   -o-animation: rotating 2s linear infinite;
   animation: rotating 2s linear infinite;
+}
+
+.cancelButton {
+  background: transparent;
+  border: none;
+  color: #00c8b3;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 20px;
+  text-decoration: underline;
+  transition: .3s;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    min-height: 0;
+  }
+
+  .card {
+    margin-top: 10px;
+  }
 }

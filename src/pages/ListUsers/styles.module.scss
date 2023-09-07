@@ -40,3 +40,9 @@
   color: #fff;
   margin-left: 30px;
 }
+
+@media (max-width: 640px) {
+  .userCard {
+    width: 100%;
+  }
+}

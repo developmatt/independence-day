@@ -31,6 +31,10 @@ export const UserForm = () => {
     mutation.mutate({ ...(data as UserInterface) })
   }
 
+  const onClickCancelHandler = () => {
+    navigate(-1)
+  }
+
   useEffect(() => {
     if (!index) return;
 
@@ -132,6 +136,8 @@ export const UserForm = () => {
                 ? <button type="button" className={`${styles.button} ${styles.buttonSpinner}`} disabled={true}><ImSpinner8 className={styles.rotating} size={23} /></button>
                 : <button id='register-user-button' className={styles.button} disabled={!(name && email && cpf && phone && Object.keys(errors).length === 0)}>Cadastrar</button>
             }
+
+            <button onClick={onClickCancelHandler} className={styles.cancelButton}>Cancelar</button>
 
 
           </form>

@@ -1,3 +1,4 @@
+import { Header } from '../../components/Header'
 import styles from './styles.module.css'
 
 type DefaultLayoutProps = {
@@ -6,8 +7,11 @@ type DefaultLayoutProps = {
 
 export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   return (
-    <div className={styles.wrapper}>
-      {children}
+    <div className={styles.container}>
+      <Header />
+      <div className={styles.wrapper}>
+        {children}
+      </div>
     </div>
   )
 }
