@@ -1,3 +1,6 @@
 export interface RouteInterface {
-  [key: string]: string
+  [key: string]: {
+    path: string
+    name: string
+  }
 }

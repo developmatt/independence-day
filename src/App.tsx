@@ -12,9 +12,9 @@ function App() {
 
   return (
     <Routes>
-      <Route path={routes.home} element={<Home />} />
-      <Route path={routes.addUser} element={<UserForm />} />
-      <Route path={routes.listUsers} element={<ListUsers />} />
+      <Route path={routes.home.path} element={<Home />} />
+      <Route path={routes.addUser.path} element={<UserForm />} />
+      <Route path={routes.listUsers.path} element={<ListUsers />} />
     </Routes>
   )
 }

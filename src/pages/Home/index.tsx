@@ -10,14 +10,14 @@ export const Home = () => {
       <h1>Home</h1>
 
       <div className={styles.cardList}>
-      <Link to={routes.addUser}>
+      <Link to={routes.addUser.path}>
         <div className={styles.card}>
           <AiOutlineUserAdd size={30} />
           <span className={styles.cardText}>Add User</span>
         </div>
       </Link>
 
-      <Link to={routes.listUsers}>
+      <Link to={routes.listUsers.path}>
         <div className={styles.card}>
           <AiOutlineUnorderedList size={30} />
           <span className={styles.cardText}>List Users</span>
