@@ -1,0 +1,147 @@
+.container {
+  display: block;
+  padding: 15px 20px;
+  padding-block: 10px;
+}
+
+.card {
+  border: 1px solid #e7e7e8;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.01), 0 1px 2px 0 rgba(0,0,0,.02);
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin: auto;
+  max-width: 500px;
+  padding: 20px;
+  width: 100%;
+  position: relative;
+}
+
+.avatarContainer {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.dataContainer {
+  padding-left: 10px;
+}
+
+.data {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cpfButton {
+  display: inline-block;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  opacity: 0.7;
+  padding-top: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.hiddenCpf {
+  opacity: 0.3;
+  margin-right: 10px;
+}
+
+.actionsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action {
+  width: 30px;
+  height: 30px;
+  background: #00c8b3;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.popupOpener {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #AAA;
+  cursor: pointer;
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba(#00c8b3, 0.7);
+  }
+}
+
+.popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #fff;
+  border: solid 1px #e7e7e8;
+  animation: popupFadeIn .3s forwards;
+}
+
+@keyframes popupFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popupList {
+  list-style: none;
+  padding: 0 5px;
+  margin: 0;
+}
+
+.popupItem:not(:last-child) {
+  border-bottom: solid 1px #e7e7e8;
+}
+
+.popupButton {
+  background: none;
+  padding: 5px 10px;
+  border: none;
+  width: 100%;
+  padding: 5px;
+  cursor: pointer;
+}

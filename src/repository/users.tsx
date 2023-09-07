@@ -27,5 +27,11 @@ export const UserRepository = {
     const newUsers = [...users, user];
     UserRepository.fill(newUsers);
     return newUsers;
+  },
+  delete: async (index: number) => {
+    const users = await UserRepository.list();
+    const newUsers = users.filter((_: UserInterface, i: number) => i !== index);
+    UserRepository.fill(newUsers);
+    return newUsers;
   }
 }
