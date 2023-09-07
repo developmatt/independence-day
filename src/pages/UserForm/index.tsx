@@ -6,30 +6,42 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import styles from './styles.module.css'
 import { maskCpf } from "../../utils/maskCpf"
 import { maskPhone } from "../../utils/maskPhone"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ImSpinner8 } from 'react-icons/im'
+import { useNavigate, useParams } from "react-router-dom"
+import { routes } from "../../utils/routes"
 
 export const UserForm = () => {
   const [loading, setLoading] = useState<boolean>(false)
 
-  const { register, watch, handleSubmit, formState: { errors } } = useForm<UserInterface>({ mode: 'onChange' });
+  let { index } = useParams();
+  const navigate = useNavigate();
+
+  const { register, watch, handleSubmit, formState: { errors }, setValue } = useForm<UserInterface>({ mode: 'onChange' });
 
   const { name, email, cpf, phone } = watch();
   const mutation = useMutation({
-    mutationFn: (user: UserInterface) => {
-      return UserRepository.post(user)
-    },
+    mutationFn: async (user: UserInterface) => {
+      return !!(index) ? UserRepository.patch(parseInt(index), user).then(() => navigate(routes.listUsers.path)) : UserRepository.post(user).then(() => navigate(routes.home.path))
+    }
   })
 
-  const onSubmitHandler: SubmitHandler<UserInterface> = data => {
+  const onSubmitHandler: SubmitHandler<UserInterface> = async data => {
     setLoading(true)
     mutation.mutate({ ...(data as UserInterface) })
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000)
   }
 
-  console.log(errors)
+  useEffect(() => {
+    if (!index) return;
+
+    UserRepository.get(parseInt(index)).then((user: UserInterface) => {
+      setValue('name', user.name)
+      setValue('email', user.email)
+      setValue('cpf', maskCpf(user.cpf))
+      setValue('phone', maskPhone(user.phone))
+    })
+
+  }, [index])
 
   return (
     <DefaultLayout>

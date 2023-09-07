@@ -13,7 +13,7 @@ function App() {
   return (
     <Routes>
       <Route path={routes.home.path} element={<Home />} />
-      <Route path={routes.addUser.path} element={<UserForm />} />
+      <Route path={`${routes.addUser.path}/:index?`} element={<UserForm />} />
       <Route path={routes.listUsers.path} element={<ListUsers />} />
     </Routes>
   )

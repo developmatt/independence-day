@@ -12,20 +12,30 @@ export const UserRepository = {
     const { data } = await axios.get('https://private-9d65b3-tinnova.apiary-mock.com/users');
     return data
   },
+  get: async (index: number) => {
+    const users = await UserRepository.list();
+    return users[index];
+  },
   list: async () => {
     const usersFromLocalStorage = await UserRepository.getFromLocalStorage();
     if(usersFromLocalStorage) return usersFromLocalStorage;
     const usersFromApi = await UserRepository.getFromApi();
-    UserRepository.fill(usersFromApi);
+    await UserRepository.fill(usersFromApi);
     return usersFromApi;
   },
-  fill: (users: UserInterface[]) => {
-    return localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(users))
+  fill: async (users: UserInterface[]) => {
+    return await localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(users))
   },
   post: async (user: UserInterface) => {
     const users = await UserRepository.list();
     const newUsers = [...users, user];
-    UserRepository.fill(newUsers);
+    await UserRepository.fill(newUsers);
+    return newUsers;
+  },
+  patch: async (index: number, user: UserInterface) => {
+    const users = await UserRepository.list();
+    const newUsers = users.map((u: UserInterface, i: number) => i === index ? user : u);
+    await UserRepository.fill(newUsers);
     return newUsers;
   },
   delete: async (index: number) => {

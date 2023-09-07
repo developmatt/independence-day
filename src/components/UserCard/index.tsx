@@ -6,6 +6,8 @@ import styles from './styles.module.css';
 import { useRef, useState } from "react";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import { UserRepository } from "../../repository/users";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../utils/routes";
 
 interface UserCardProps {
   index: number
@@ -15,16 +17,21 @@ interface UserCardProps {
 export const UserCard = ({ user, index }: UserCardProps) => {
   const [showCpf, setShowCpf] = useState<boolean>(false);
   const [showPopup, setShowPopup] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleClickToCall = () => window.open(`tel:+55${user.phone}`);
 
   const handleClickToEmail = () => window.open(`mailto:${user.email}`);
 
-  const handleOpenWhatsApp = () => window.open(`https://api.whatsapp.com/send?phone=55${user.phone}`);
+  const handleOpenWhatsApp = () => window.open(`https://api.whatsapp.com/send?phone=55${user.phone.replace(/\D/g, '')}`);
 
   const handleDeleteUser = () => {
     if(!confirm('Tem certeza que deseja apagar este usuário?')) return
     UserRepository.delete(index);
+  }
+
+  const handleUpdateUser = () => {
+    navigate(`${routes.addUser.path}/${index}`)
   }
 
   const popUpRef = useRef<HTMLDivElement>(null);
@@ -61,7 +68,7 @@ export const UserCard = ({ user, index }: UserCardProps) => {
           showPopup && <div className={styles.popup} ref={popUpRef}>
             <ul className={styles.popupList}>
               <li className={styles.popupItem}>
-                <button className={styles.popupButton}>Editar</button>
+                <button onClick={handleUpdateUser} className={styles.popupButton}>Editar</button>
               </li>
 
               <li className={styles.popupItem}>
