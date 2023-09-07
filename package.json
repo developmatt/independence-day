@@ -8,7 +8,10 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "sass": "concurrently \"sass --watch --no-source-map src:src --style compressed\""
+    "sass": "concurrently \"sass --watch --no-source-map src:src --style compressed\"",
+    "cypress": "yarn dev | cypress run --browser chrome",
+    "cypress:open": "yarn dev | cypress open"
+
   },
   "dependencies": {
     "axios": "^1.5.0",
@@ -27,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "cypress": "^13.1.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",

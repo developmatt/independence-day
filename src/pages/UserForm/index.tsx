@@ -130,7 +130,7 @@ export const UserForm = () => {
             {
               loading
                 ? <button type="button" className={`${styles.button} ${styles.buttonSpinner}`} disabled={true}><ImSpinner8 className={styles.rotating} size={23} /></button>
-                : <button className={styles.button} disabled={!(name && email && cpf && phone && Object.keys(errors).length === 0)}>Cadastrar</button>
+                : <button id='register-user-button' className={styles.button} disabled={!(name && email && cpf && phone && Object.keys(errors).length === 0)}>Cadastrar</button>
             }
 
 

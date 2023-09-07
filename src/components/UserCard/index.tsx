@@ -46,13 +46,13 @@ export const UserCard = ({ user, index }: UserCardProps) => {
         </div>
 
         <div className={styles.dataContainer}>
-          <span className={`${styles.data} ${styles.name}`}>{user.name}</span>
+          <span id={`user-name-index-${index}`} className={`${styles.data} ${styles.name}`}>{user.name}</span>
           <span className={styles.data}><strong>E-mail:</strong> {user.email}</span>
-          <span className={styles.data}><strong>Telefone:</strong> {maskPhone(user.phone)}</span>
+          <span className={styles.data}><strong id={`user-phone-${user.phone}`}>Telefone:</strong> {maskPhone(user.phone)}</span>
           <span className={styles.data}><strong>CPF:</strong> {
             showCpf
-            ? <span>{maskCpf(user.cpf)} <button className={styles.cpfButton} onClick={() => setShowCpf(false)}><BsEyeSlash /></button> </span>
-            : <span><span className={styles.hiddenCpf}>***.***.***-**</span><button className={styles.cpfButton} onClick={() => setShowCpf(true)}><BsEye /></button></span>
+            ? <span id={`user-cpf-${user.cpf}`}>{maskCpf(user.cpf)} <button className={styles.cpfButton} onClick={() => setShowCpf(false)}><BsEyeSlash /></button> </span>
+            : <span><span className={styles.hiddenCpf}>***.***.***-**</span><button id={`show-cpf-${index}`} className={styles.cpfButton} onClick={() => setShowCpf(true)}><BsEye /></button></span>
           }</span>
 
           <div className={styles.actionsContainer}>
@@ -62,17 +62,17 @@ export const UserCard = ({ user, index }: UserCardProps) => {
           </div>
         </div>
 
-        <button className={styles.popupOpener} onClick={() => setShowPopup(true)}><BsThreeDotsVertical /></button>
+        <button id={`show-modal-user-${index}-button`} className={styles.popupOpener} onClick={() => setShowPopup(true)}><BsThreeDotsVertical /></button>
         
         {
           showPopup && <div className={styles.popup} ref={popUpRef}>
             <ul className={styles.popupList}>
               <li className={styles.popupItem}>
-                <button onClick={handleUpdateUser} className={styles.popupButton}>Editar</button>
+                <button id={`edit-user-${index}-popup-button`} onClick={handleUpdateUser} className={styles.popupButton}>Editar</button>
               </li>
 
               <li className={styles.popupItem}>
-                <button onClick={handleDeleteUser} className={styles.popupButton}>Apagar</button>
+                <button id={`delete-user-${index}-popup-button`} onClick={handleDeleteUser} className={styles.popupButton}>Apagar</button>
               </li>
             </ul>
           </div>

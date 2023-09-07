@@ -24,7 +24,7 @@ export const UserRepository = {
     return usersFromApi;
   },
   fill: async (users: UserInterface[]) => {
-    return await localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(users))
+    return await localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(users.map((user: UserInterface) => ({ ...user, cpf: user.cpf.replace(/\D/g, ''), phone: user.phone.replace(/\D/g, '') }))));
   },
   post: async (user: UserInterface) => {
     const users = await UserRepository.list();

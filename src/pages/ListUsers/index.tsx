@@ -23,8 +23,8 @@ export const ListUsers = () => {
         <div className={styles.usersList}>
         {
           data?.map((user: UserInterface, index: number) => (
-            <div className={styles.userCard}>
-              <UserCard key={index} user={user} index={index} />
+            <div key={index} className={styles.userCard}>
+              <UserCard user={user} index={index} />
             </div>
           ))
         }
