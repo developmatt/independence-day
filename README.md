@@ -1,27 +1,33 @@
-# React + TypeScript + Vite
+# Independence Day
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Installing / Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+After cloning this project, you must run two commands:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```shell
+yarn
+yarn dev
 ```
+Then, you can go to http://localhost:5173/ and see the website.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Developing
+
+### Built With
+It was built using Vite (to create the boilerplate), React, Sass, CSS, JSX.
+Those are the main technologies.
+I added more packages to speed up the development process and offer a good experience:
+ - React Router - controls the routes
+ - React Query - to control the important requests and caching data
+ - Axios - to the external requests
+ - React Hook Form - to control and validate form fields
+ - React Icons - Icons library 
+
+### Testing
+I added end-to-end tests scripts that automatize the testing process.
+This can be done by one of the following commands
+
+```shell
+yarn run cypress //runs all the cypress tests is terminal
+yarn run cypress:open //opens the cypress interface and let you select the tests you want to follow
+```
