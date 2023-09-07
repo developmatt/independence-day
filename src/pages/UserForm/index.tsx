@@ -1,8 +1,8 @@
 import { useMutation } from "react-query"
-import { UserRepository } from "../repository/users"
-import { UserInterface } from "../types/User"
+import { UserRepository } from "../../repository/users"
+import { UserInterface } from "../../types/User"
 
-export const Form = () => {
+export const UserForm = () => {
   const mutation = useMutation({
     mutationFn: (user: UserInterface) => {
       return UserRepository.post(user)

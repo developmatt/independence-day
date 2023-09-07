@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 import './App.css'
 import { ListUsers } from './pages/ListUsers'
-import { Form } from './pages/Form'
+import { UserForm } from './pages/UserForm'
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <ListUsers />
-      <Form />
+      <UserForm />
     </>
   )
 }
