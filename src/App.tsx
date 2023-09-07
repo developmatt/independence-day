@@ -1,17 +1,23 @@
-import { useQuery } from 'react-query'
-import './App.css'
-import { ListUsers } from './pages/ListUsers'
-import { UserForm } from './pages/UserForm'
+import {
+  Route,
+  Routes
+} from "react-router-dom"
+import { Home } from "./pages/Home"
+import { ListUsers } from "./pages/ListUsers"
+import { UserForm } from "./pages/UserForm"
 
 function App() {
 
-  const {} = useQuery('')
 
   return (
-    <>
-      <ListUsers />
-      <UserForm />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route
+        path="users"
+        element={<ListUsers />}
+      />
+      <Route path="add" element={<UserForm />} />
+    </Routes>
   )
 }
 

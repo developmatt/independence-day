@@ -4,11 +4,7 @@ import { UserInterface } from "../../types/User";
 
 export const ListUsers = () => {
 
-  const { data, isFetching } = useQuery('users', async () => {
-    const response = await UserRepository.list()
-    return response
-  })
-
+  const { data, isFetching } = useQuery(['users'], () => UserRepository.list())
   console.log(data)
 
   if (isFetching) return <h1>Loading...</h1>
